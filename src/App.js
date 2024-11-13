@@ -3,7 +3,26 @@ import React, { useState } from 'react';
 import InputMask from "react-input-mask";
 import Select from 'react-select'; // Importando o react-select
 import Switch from "react-switch";
-
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    fontFamily: 'Poppins, sans-serif', // Aplica a fonte na área de controle (caixa de seleção)
+  }),
+  menu: (provided) => ({
+    ...provided,
+    fontFamily: 'Poppins, sans-serif', // Aplica a fonte nas opções do menu
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    fontFamily: 'Poppins, sans-serif', // Aplica a fonte no valor selecionado
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    fontFamily: 'Poppins, sans-serif', // Aplica a fonte em cada opção
+    backgroundColor: state.isSelected ? "#e783a6" : "#fff", // Exemplo de cor para a opção selecionada
+    color: state.isSelected ? "#fff" : "#333", // Exemplo de cor do texto para opção selecionada
+  }),
+};
 function App() {
   const [form, setForm] = useState({ peso: '', altura: '', idade: '', atividadeFisica: '1.2' });
   const [isEnable, setIsEnable] = useState(true);
@@ -94,6 +113,36 @@ function App() {
                 value={form.idade}
               />
             </div>
+            <div className="children-container-input-Label">
+              <label>Qual a sua Idade? </label>
+              <InputMask 
+                placeholder="Digite Sua Idade"
+                mask="99"
+                onChange={handleChange}
+                name="idade"
+                value={form.idade}
+              />
+            </div>
+            <div className="children-container-input-Label">
+              <label>Qual a sua Idade? </label>
+              <InputMask 
+                placeholder="Digite Sua Idade"
+                mask="99"
+                onChange={handleChange}
+                name="idade"
+                value={form.idade}
+              />
+            </div>
+            <div className="children-container-input-Label">
+              <label>Qual a sua Idade? </label>
+              <InputMask 
+                placeholder="Digite Sua Idade"
+                mask="99"
+                onChange={handleChange}
+                name="idade"
+                value={form.idade}
+              />
+            </div>
             <div className="children-container-input-Label"> 
               <label>Seu Gênero? </label>
               <Switch
@@ -101,8 +150,8 @@ function App() {
                 checked={isEnable}
                 onColor="#9a93d7"
                 offColor="#e783a6"
-                checkedIcon={<div style={{ padding: 5, color: "white", fontFamily: 'Poppins, sans-serif' }}>M</div>}
-                uncheckedIcon={<div style={{ padding: 5, color: "white", fontFamily: 'Poppins, sans-serif' }}>F</div>}
+                checkedIcon={<div style={{ paddingLeft: 8, color: "white", fontFamily: 'Poppins, sans-serif', /*marginBottom: '2px'*/ }}>M</div>}
+                uncheckedIcon={<div style={{ paddingLeft: 8, color: "white", fontFamily: 'Poppins, sans-serif', /*marginBottom: '2px'*/ }}>F</div>}
               />
               <span>{text}</span>
             </div>
@@ -112,6 +161,7 @@ function App() {
                 options={atividadeOptions}
                 onChange={handleSelectChange}
                 value={atividadeOptions.find(option => option.value === form.atividadeFisica)}
+                styles={customStyles}
               />
             </div>
           </div>

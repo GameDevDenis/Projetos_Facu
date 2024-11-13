@@ -9,7 +9,7 @@
   margin: 0;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 140vh;
 }
 
 .form {
@@ -75,7 +75,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
+  margin: 8px;
 }
 
 .container-button{
