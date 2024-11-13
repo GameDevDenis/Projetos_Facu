@@ -24,7 +24,7 @@ const customStyles = {
   }),
 };
 function App() {
-  const [form, setForm] = useState({ peso: '', altura: '', idade: '', atividadeFisica: '1.2' });
+  const [form, setForm] = useState({ peso: '', altura: '', idade: '', atividadeFisica: '1.2', pescoco: '', cintura: '', quadril: '' });
   const [isEnable, setIsEnable] = useState(true);
   const [text, setText] = useState(' ');
 
@@ -47,12 +47,15 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (!form.peso || !form.altura || !form.idade) {
+    if (!form.peso || !form.altura || !form.idade || !form.quadril || !form.cintura || !form.pescoco) {
       alert("Os valores não podem ser vazios ou inválidos");
     } else {
       const alturaEmMetros = parseFloat(form.altura.replace(',', '.'));
       const peso = parseFloat(form.peso);
       const idade = parseInt(form.idade);
+      const quadril= parseFloat(form.quadril);
+      const cintura= parseFloat(form.cintura);
+      const pescoco= parseFloat(form.pescoco);
       if (isNaN(alturaEmMetros) || isNaN(peso) || isNaN(idade)) {
         alert("Os valores não podem ser vazios ou inválidos");
         return;
@@ -64,8 +67,15 @@ function App() {
         : 447.6 + (9.2 * peso) + (3.1 * (alturaEmMetros * 100)) - (4.3 * idade);
 
       const gastoEnergetico = tmb * parseFloat(form.atividadeFisica);
+      
+      const logCinturaPescocoM = Math.log(cintura - pescoco);
+      const logCinturaPescocoF = Math.log(cintura + quadril - pescoco);
+      const logAltura = Math.log(alturaEmMetros);
+      const igc = isEnable
+        ? 86.010 * logCinturaPescocoM - (70.041 * logAltura) + 36.76
+        : 163.205 * logCinturaPescocoF - (97.684 * logAltura) - 78.387;
       alert(
-        `O seu IMC é: ${imc.toFixed(2)}\nO seu TMB é: ${tmb.toFixed(2)}\nSeu Gasto Energético Diário é: ${gastoEnergetico.toFixed(2)}`
+        `O seu IMC é: ${imc.toFixed(2)}\nO seu TMB é: ${tmb.toFixed(2)}\nO seu GET é: ${gastoEnergetico.toFixed(2)}\nO seu IGC é: ${igc.toFixed(2)}`
       );
     }
   }
@@ -114,33 +124,33 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Qual a sua Idade? </label>
+              <label>Quanto Mede Seu Cintura?</label>
               <InputMask 
-                placeholder="Digite Sua Idade"
+                placeholder="Sua Cintura"
                 mask="99"
                 onChange={handleChange}
-                name="idade"
-                value={form.idade}
+                name="cintura"
+                value={form.cintura}
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Qual a sua Idade? </label>
+              <label>Quanto Mede Seu Quadril? </label>
               <InputMask 
-                placeholder="Digite Sua Idade"
-                mask="99"
+                placeholder="Seu Quadril"
+                mask="999"
                 onChange={handleChange}
-                name="idade"
-                value={form.idade}
+                name="quadril"
+                value={form.quadril}
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Qual a sua Idade? </label>
+              <label>Quanto Mede Seu Pescoço? </label>
               <InputMask 
-                placeholder="Digite Sua Idade"
-                mask="99"
+                placeholder="Seu Pescoço"
+                mask="999"
                 onChange={handleChange}
-                name="idade"
-                value={form.idade}
+                name="pescoco"
+                value={form.pecoco}
               />
             </div>
             <div className="children-container-input-Label"> 
