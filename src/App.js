@@ -7,7 +7,7 @@ import Switch from "react-switch";
 function App() {
   const [form, setForm] = useState({ peso: '', altura: '', idade: '', atividadeFisica: '1.2' });
   const [isEnable, setIsEnable] = useState(true);
-  const [text, setText] = useState('Active');
+  const [text, setText] = useState(' ');
 
   const toggleSwitch = () => {
     if (isEnable) {
@@ -78,7 +78,7 @@ function App() {
               <label>Quanto é seu Peso? </label>
               <InputMask
                 placeholder="Digite Seu Peso"
-                mask="999"
+                mask="99.9"
                 onChange={handleChange}
                 name="peso"
                 value={form.peso}
@@ -101,8 +101,8 @@ function App() {
                 checked={isEnable}
                 onColor="#9a93d7"
                 offColor="#e783a6"
-                checkedIcon={<div style={{ padding: 5, color: "white" }}>M</div>}
-                uncheckedIcon={<div style={{ padding: 5, color: "white" }}>F</div>}
+                checkedIcon={<div style={{ padding: 5, color: "white", fontFamily: 'Poppins, sans-serif' }}>M</div>}
+                uncheckedIcon={<div style={{ padding: 5, color: "white", fontFamily: 'Poppins, sans-serif' }}>F</div>}
               />
               <span>{text}</span>
             </div>
