@@ -127,7 +127,7 @@ function App() {
               <label>Quanto Mede Seu Cintura?</label>
               <InputMask 
                 placeholder="Sua Cintura"
-                mask="99"
+                mask="999"
                 onChange={handleChange}
                 name="cintura"
                 value={form.cintura}
