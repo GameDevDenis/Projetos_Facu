@@ -53,9 +53,9 @@ function App() {
       const alturaEmMetros = parseFloat(form.altura.replace(',', '.'));
       const peso = parseFloat(form.peso);
       const idade = parseInt(form.idade);
-      const quadril= parseFloat(form.quadril);
-      const cintura= parseFloat(form.cintura);
-      const pescoco= parseFloat(form.pescoco);
+      const quadril= parseInt(form.quadril);
+      const cintura= parseInt(form.cintura);
+      const pescoco= parseInt(form.pescoco);
       if (isNaN(alturaEmMetros) || isNaN(peso) || isNaN(idade)) {
         alert("Os valores não podem ser vazios ou inválidos");
         return;
@@ -68,12 +68,12 @@ function App() {
 
       const gastoEnergetico = tmb * parseFloat(form.atividadeFisica);
       
-      const logCinturaPescocoM = Math.log(cintura - pescoco);
-      const logCinturaPescocoF = Math.log(cintura + quadril - pescoco);
-      const logAltura = Math.log(alturaEmMetros);
+      const logCinturaPescocoM = Math.log10(cintura - pescoco);
+      const logCinturaPescocoF = Math.log10(cintura + quadril - pescoco);
+      const logAltura = Math.log10(alturaEmMetros * 100);
       const igc = isEnable
-        ? 86.010 * logCinturaPescocoM - (70.041 * logAltura) + 36.76
-        : 163.205 * logCinturaPescocoF - (97.684 * logAltura) - 78.387;
+        ? 495 / (1.0324 - 0.19077 * logCinturaPescocoM + 0.15456 * logAltura) - 450
+        : 495 / (1.2957 - 0.35004 * logCinturaPescocoF + 0.22100 * logAltura) - 450;
       alert(
         `O seu IMC é: ${imc.toFixed(2)}\nO seu TMB é: ${tmb.toFixed(2)}\nO seu GET é: ${gastoEnergetico.toFixed(2)}\nO seu IGC é: ${igc.toFixed(2)}`
       );
@@ -107,7 +107,7 @@ function App() {
               <label>Quanto é seu Peso? </label>
               <InputMask
                 placeholder="Digite Seu Peso"
-                mask="99.9"
+                
                 onChange={handleChange}
                 name="peso"
                 value={form.peso}
@@ -117,7 +117,7 @@ function App() {
               <label>Qual a sua Idade? </label>
               <InputMask 
                 placeholder="Digite Sua Idade"
-                mask="99"
+                
                 onChange={handleChange}
                 name="idade"
                 value={form.idade}
@@ -127,7 +127,7 @@ function App() {
               <label>Quanto Mede Seu Cintura?</label>
               <InputMask 
                 placeholder="Sua Cintura"
-                mask="999"
+                
                 onChange={handleChange}
                 name="cintura"
                 value={form.cintura}
@@ -137,7 +137,7 @@ function App() {
               <label>Quanto Mede Seu Quadril? </label>
               <InputMask 
                 placeholder="Seu Quadril"
-                mask="999"
+                
                 onChange={handleChange}
                 name="quadril"
                 value={form.quadril}
@@ -147,7 +147,7 @@ function App() {
               <label>Quanto Mede Seu Pescoço? </label>
               <InputMask 
                 placeholder="Seu Pescoço"
-                mask="999"
+                
                 onChange={handleChange}
                 name="pescoco"
                 value={form.pecoco}
