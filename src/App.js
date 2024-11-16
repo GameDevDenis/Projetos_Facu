@@ -26,15 +26,16 @@ const customStyles = {
 function App() {
   const [form, setForm] = useState({ peso: '', altura: '', idade: '', atividadeFisica: '1.2', pescoco: '', cintura: '', quadril: '' });
   const [isEnable, setIsEnable] = useState(true);
-  const [text, setText] = useState(' ');
+
 
   const toggleSwitch = () => {
-    if (isEnable) {
-      setText(' ');
-    } else {
-      setText(' ');
+   
+    
+    setIsEnable(previousState => !previousState); 
+    if (!isEnable) {
+    
+      setForm({ ...form, quadril: '' });
     }
-    setIsEnable(previousState => !previousState);
   };
 
   const handleChange = (event) => {
@@ -47,7 +48,7 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (!form.peso || !form.altura || !form.idade || !form.quadril || !form.cintura || !form.pescoco) {
+    if ((!form.peso || !form.altura || !form.idade || !form.cintura || !form.pescoco) || (!isEnable && !form.quadril)) {
       alert("Os valores não podem ser vazios ou inválidos");
     } else {
       const alturaEmMetros = parseFloat(form.altura.replace(',', '.'));
@@ -137,7 +138,7 @@ function App() {
               <label>Quanto Mede Seu Quadril? </label>
               <InputMask 
                 placeholder="Seu Quadril"
-                
+                disabled={isEnable}
                 onChange={handleChange}
                 name="quadril"
                 value={form.quadril}
@@ -163,7 +164,6 @@ function App() {
                 checkedIcon={<div style={{ paddingLeft: 8, color: "white", fontFamily: 'Poppins, sans-serif', /*marginBottom: '2px'*/ }}>M</div>}
                 uncheckedIcon={<div style={{ paddingLeft: 8, color: "white", fontFamily: 'Poppins, sans-serif', /*marginBottom: '2px'*/ }}>F</div>}
               />
-              <span>{text}</span>
             </div>
             <div className="children-container-input-Label">
               <label>Seu Nível de Atividade Física</label>
