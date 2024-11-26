@@ -95,9 +95,9 @@ function App() {
         <div className="form">
           <div className="container-input-Label">
             <div className="children-container-input-Label"> 
-              <label>Quanto é sua Altura? </label>
+              <label>Altura? </label>
               <InputMask
-                placeholder="Digite Sua Altura"
+                placeholder="Digite a Altura"
                 mask="9.99"
                 onChange={handleChange}
                 name="altura"
@@ -105,9 +105,9 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label"> 
-              <label>Quanto é seu Peso? </label>
+              <label>Peso? </label>
               <InputMask
-                placeholder="Digite Seu Peso"
+                placeholder="Digite o Peso"
                 
                 onChange={handleChange}
                 name="peso"
@@ -115,9 +115,9 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Qual a sua Idade? </label>
+              <label>Idade? </label>
               <InputMask 
-                placeholder="Digite Sua Idade"
+                placeholder="Digite a Idade"
                 
                 onChange={handleChange}
                 name="idade"
@@ -125,9 +125,9 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Quanto Mede Seu Cintura?</label>
+              <label>Cintura?</label>
               <InputMask 
-                placeholder="Sua Cintura"
+                placeholder="Medidas da Cintura"
                 
                 onChange={handleChange}
                 name="cintura"
@@ -135,9 +135,9 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Quanto Mede Seu Quadril? </label>
+              <label>Quadril? </label>
               <InputMask 
-                placeholder="Seu Quadril"
+                placeholder="Medidas do Quadril"
                 disabled={isEnable}
                 onChange={handleChange}
                 name="quadril"
@@ -145,9 +145,9 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label">
-              <label>Quanto Mede Seu Pescoço? </label>
+              <label>Pescoço? </label>
               <InputMask 
-                placeholder="Seu Pescoço"
+                placeholder="Medidas do Pescoço"
                 
                 onChange={handleChange}
                 name="pescoco"
@@ -155,7 +155,7 @@ function App() {
               />
             </div>
             <div className="children-container-input-Label"> 
-              <label>Seu Gênero? </label>
+              <label>Seu Gênero? (biologico) </label>
               <Switch
                 onChange={toggleSwitch}
                 checked={isEnable}
