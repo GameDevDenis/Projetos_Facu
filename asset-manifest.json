@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Projetos_Facu/static/css/main.8cdbefc6.css",
-    "main.js": "/Projetos_Facu/static/js/main.5432a11a.js",
+    "main.js": "/Projetos_Facu/static/js/main.7f532599.js",
     "index.html": "/Projetos_Facu/index.html",
     "main.8cdbefc6.css.map": "/Projetos_Facu/static/css/main.8cdbefc6.css.map",
-    "main.5432a11a.js.map": "/Projetos_Facu/static/js/main.5432a11a.js.map"
+    "main.7f532599.js.map": "/Projetos_Facu/static/js/main.7f532599.js.map"
   },
   "entrypoints": [
     "static/css/main.8cdbefc6.css",
-    "static/js/main.5432a11a.js"
+    "static/js/main.7f532599.js"
   ]
 }
